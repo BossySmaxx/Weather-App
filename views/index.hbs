@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App - Node js (Express js)</title>
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- 
+██████╗  ██████╗ ███████╗███████╗██╗   ██╗███████╗███╗   ███╗ █████╗ ██╗  ██╗██╗  ██╗
+██╔══██╗██╔═══██╗██╔════╝██╔════╝╚██╗ ██╔╝██╔════╝████╗ ████║██╔══██╗╚██╗██╔╝╚██╗██╔╝
+██████╔╝██║   ██║███████╗███████╗ ╚████╔╝ ███████╗██╔████╔██║███████║ ╚███╔╝  ╚███╔╝ 
+██╔══██╗██║   ██║╚════██║╚════██║  ╚██╔╝  ╚════██║██║╚██╔╝██║██╔══██║ ██╔██╗  ██╔██╗ 
+██████╔╝╚██████╔╝███████║███████║   ██║   ███████║██║ ╚═╝ ██║██║  ██║██╔╝ ██╗██╔╝ ██╗
+╚═════╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
+Want me to build your website
+contact: dedsec@gmail.com                                                                                                                           
+-->
+
+    <div class="container">
+        <div class="phone">
+            <div class="notch"></div>
+            <div class="screen">
+                <div class="alert"> <h3 class="msg"></h3> <i class="lni lni-cross-circle"></i> </div>
+                <div class="menu-box">
+                    <div class="toggle">
+                        <button class="btn"> <i class="lni lni-cog"></i> </button>
+                    </div>
+                    <form action="/" method="GET" class="wrapper ">
+                        <input type="text" name="city" id="" placeholder="city name" class="city-name" autocomplete="off">
+                        <div class="auto-detect">
+                            auto detect   <span><i class="lni lni-target-customer"></i>
+                                <input type="checkbox" name="" id="checkbox">
+                                <label for="checkbox" class="btn"></label>
+                            </span>
+                                <!-- <span class="btn"></span> -->
+                        </div>
+                    </form>
+                </div>
+                <div class="main">
+                    <div class="weather-info">
+                        <h1 class="main-weather">{{mainWeather}}</h1>
+                        <h3 class="secondary-weather">{{desc}}</h3>
+                        <p class="other-indo">{{date}}</p>
+                    </div>
+                    {{!-- <div class="icon">
+                        <img src="http://openweathermap.org/img/wn/{{icon}}@4x.png" alt="weather icon">
+                    </div> --}}
+                    <div class="temp-info">
+                        <h1 class="main-temp">{{temp}}°C</h1>
+                        <div class="other-temp">
+                            <h3 class="max-temp"> <i class="lni lni-chevron-up"></i> {{maxTemp}}°C</h3> <hr>
+                            <h3 class="min-temp">{{minTemp}}°C <i class="lni lni-chevron-down"></i> </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="city">
+                    <h1>{{city}}</h1>
+                </div>
+                <div class="charts">
+                    <div class="calender">
+                        <div class="cal-box">
+                            <input type="date" name="date" id="cal">
+                        </div>
+                        <i class="lni lni-calendar"></i>
+                    </div>
+                    
+                    <div class="weekend date-bar">
+                        <div class="date">20</div>
+                        <div class="month">Month </div>
+                        <div class="year">Year</div>
+                    </div>
+                    <div class="weekend-box">
+                        <div class="weekend">
+                            <div class="day">monday</div>
+                            <div class="w-icon"><i class="lni lni-cloudy-sun"></i> </div>
+                            <div class="temp">7°</div>
+                        </div>
+                        <div class="weekend">
+                            <div class="day">Tuesday</div>
+                            <div class="w-icon"><i class="lni lni-cloudy-sun"></i></div>
+                            <div class="temp">7°</div>
+                        </div>
+                        <div class="weekend">
+                            <div class="day">wednesday</div>
+                            <div class="w-icon"><i class="lni lni-cloudy-sun"></i></div>
+                            <div class="temp">7°</div>
+                        </div>
+                        <div class="weekend">
+                            <div class="day">thursdday</div>
+                            <div class="w-icon"><i class="lni lni-cloudy-sun"></i></div>
+                            <div class="temp">7°</div>
+                        </div>
+                        <div class="weekend">
+                            <div class="day">friday</div>
+                            <div class="w-icon"><i class="lni lni-cloudy-sun"></i></div>
+                            <div class="temp">7°</div>
+                        </div>
+                        <div class="weekend">
+                            <div class="day">saturday</div>
+                            <div class="w-icon"><i class="lni lni-cloudy-sun"></i></div>
+                            <div class="temp">7°</div>
+                        </div>
+                        <div class="weekend">
+                            <div class="day">sunday</div>
+                            <div class="w-icon"><i class="lni lni-cloudy-sun"></i></div>
+                            <div class="temp">7°</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script/controls.js"></script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+:root {
+    --main-theme: white;
+    --secondary-theme: rgb(20, 20, 20);
+    /* --secondary-theme: rgb(0, 0, 0); */
+    --button-bg: rgba(24, 23, 23, 0.733);
+}
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    user-select: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    font-size: 0.95em;
+    font-family: 'poopins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    background: var(--secondary-theme);
+    /* background-color: white; */
+}
+
+::-webkit-scrollbar {width:5px;}
+::-webkit-scrollbar-track {background-color:rgba(245, 245, 245, 0.842);}
+::-webkit-scrollbar-thumb {background-color:rgba(10, 10, 10, 0.61); border-radius:30px;}
+
+h1 {
+    font-weight: 500;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+.alert {
+    position: absolute;
+    /* top: 30px; */
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 100px);
+    height: 40px;
+    background-color: #c0392b;
+    z-index: 1000;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    border-radius: 7px;
+}
+.alertme {
+    display: flex;
+    opacity: 0;
+    transform: 0;
+    animation: alertme 0.5s forwards;
+    top: -30px;
+}
+
+@keyframes alertme {
+    from{
+        opacity: .0;
+        top: -30px;
+    }
+
+    to {
+        opacity: 1.0;
+        top: 28px;
+    }
+}
+
+.alert h3 {
+    font-size: 1.1em;
+}
+
+.alert i {
+    font-size: 1.4em;
+}
+
+.container {
+    /* background-color: var(--secondary-theme); */
+    width: 90%;
+    height: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Outter Body of The phone */
+.phone {
+    position: relative;
+    width: 100%;
+    background-color: var(--secondary-theme);
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 30px;
+    transform: scaleX(1.1);
+}
+
+/* That little annoying object on top the screen which doesn't anything */
+.notch {
+    background-color: var(--secondary-theme);
+    width: 180px;
+    height: 40px;
+    border-radius: 0% 0% 8% 8% / 0% 0% 60% 60%;
+    z-index: 1;
+}
+
+/* It's the actual screen where all the data is loaded */
+.screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    background-color: var(--main-theme);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: url('/img/back.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+/* HEre lies the weather report and information */
+.main {
+    width: 100%;
+    min-height: 200px;
+    flex: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--main-theme);
+    background: transparent;
+    backdrop-filter: blur(4px) contrast(1.1) brightness(1) saturate(.55);
+    -webkit-backdrop-filter: blur(4px) contrast(1.1) brightness(1) saturate(.55);
+    color: white;
+    text-transform: capitalize;
+}
+
+.weather-info {
+    font-size: 1.2em;
+}
+
+.temp-info {
+    width: 120px;
+    display: flex;
+    /* background-color: red; */
+    justify-content: space-around;
+    align-items: center;
+}
+
+.temp-info h1 {
+    font-size: clamp(20px, 5vw, 4em);
+    font-size: 4em;
+}
+
+.temp-info .other-temp {
+    font-size: 1.3em;
+}
+
+ /* It's shows the city and country and stufss */
+.city {
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(8px) contrast(1.1) grayscale(0.5) brightness(0.8) saturate(1.7);
+    -webkit-backdrop-filter: blur(8px) contrast(1.1) grayscale(0.5) saturate(1.7);
+    color:white;
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+
+/* this is the button on bottom right corner of the screen to open calender and pick date  */
+.calender {
+    position: fixed;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--button-bg);
+    bottom: 10px;
+    z-index: 1000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: url('/cursor/pointer.png'), pointer;
+}
+
+.cal-box {
+    position: absolute;
+    top: 0;
+    left: -120px;
+    width: 100px;
+    height: 40px;
+    display: none;
+}
+
+.calender:hover .cal-box {
+    display: inline;
+    cursor: url('cursor/pointer.png'), pointer;
+}
+
+.cal-box #cal {
+    cursor: url('cursor/pointer.png'), pointer;
+    padding: 0.5em;
+}
+
+/* It's the chart of the whole week to show the weather reports of... */
+.charts {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* height: 100%; */
+    flex: 1;
+    background-color: white;
+    overflow-y: scroll;
+    position: relative;
+    user-select: none;
+    text-transform: capitalize;
+    background-color: rgba(0, 0, 0, 0.753);
+    background-color: transparent;
+    /* backdrop-filter: blur(2px) brightness(2) contrast(1.1); */
+    /* -webkit-backdrop-filter: blur(2px) brightness(2) contrast(1.1); */
+}
+
+.charts::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: 0;
+    left: 0;
+    /* background-color: rgba(206, 4, 4, 0.527); */
+    z-index: -1;
+    backdrop-filter: blur(3px) contrast(1.1) brightness(1.2) saturate(1.0);
+    -webkit-backdrop-filter: blur(3px) contrast(1.1) brightness(1.2) saturate(1.0);
+}
+
+.weekend-box {
+    position: relative;
+    top: 35px;
+}
+
+.weekend {
+    display: flex;
+    width: 100%;
+    min-height: 35px;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: aliceblue; */
+    transition: 0.35s;
+    text-transform: capitalize;
+    color: white;
+}
+
+.date-bar {
+    position: fixed;
+    z-index: 10;
+    background-color: transparent;
+    /* background-color: transparent; */
+    backdrop-filter: blur(10px) contrast(1.1) brightness(1.2) saturate(1.0);
+}
+
+.weekend:hover {
+    background-color: rgba(206, 213, 219, 0.212);
+}
+
+.weekend>div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.menu-box {
+    position: absolute;
+    z-index: 1000;
+    left: 15px;
+    top: 30px;
+}
+.toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(20, 19, 19, 0.651);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: url('cursor/pointer.png'), pointer;
+
+    transition: 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.menu-box button {
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    cursor: url('cursor/pointer.png'), pointer;
+}
+
+.toggle i {
+    font-size: 1.5em;
+}
+
+.menu-box .toggle:hover {
+    transform: rotate(70deg);
+}
+
+.menu-box .wrapper {
+    position: relative;
+    top: 20px;
+    display: none;
+    width: 200px;
+    height: 120px;
+    color: white;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 17px;
+    background-color: rgba(255, 255, 255, 0.164);
+    backdrop-filter: blur(5px);
+    flex-direction: column;
+    user-select: none;
+}
+
+.menu-box .active {
+    display: flex;
+    animation: active .51s forwards ease-in-out;
+    opacity: 0;
+}
+
+@keyframes active {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.city-name {
+    position: relative;
+    /* margin-top: 10px; */
+    /* top: 20px; */
+    /* padding: 0.5em; */
+    border-radius: 5px;
+    padding-left: 10px;
+    border: none;
+    outline-color: #27ae60;
+    color: rgb(19, 18, 18);
+    font-size: 1.1em;
+    text-transform: capitalize;
+    width: calc(100% - 20px);
+    height: 30px;
+    background-color: rgb(255, 255, 255);
+}
+
+.auto-detect {
+    position: relative;
+    /* margin-top: 10px; */
+    display: block;
+    display: flex;
+    justify-content: space-around;
+    width: calc(100% - 10px);
+    align-items: center;
+    font-size: 1.1em;
+    text-transform: capitalize;
+}
+
+.auto-detect span .btn {
+    position: absolute;
+    margin-left: -30px;
+    width: 40px;
+    height: 25px;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    cursor: url('cursor/pointer.png'), pointer;
+}
+
+.auto-detect span .btn::after {
+    content: '';
+    position: absolute;
+    background-color: rgb(22, 21, 21);
+    width: 22px;
+    height: 22.5px;
+    top: 1.5px;
+    left: 1px;
+    border-radius: 50%;
+    transition: 0.15s;
+}
+
+#checkbox:checked ~ .btn::after {
+    left: 17px;
+    background-color: #27ae60;
+}
+
+#checkbox:checked ~ .btn {
+    background-color: rgb(22, 21, 21);
+}
+
+.auto-detect #checkbox {
+    display: none;
+}
+
+.auto-detect i {
+    font-size: 1.2em;
+}
+
+
+@media screen and (max-width: 500px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        text-align: center;
+        font-size: 0.8em;
+    }
+}
